@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Upload blogs</title>
+    </head>
+    <body>
+        {% if user.is_authenticated %}
+        <form action="{% url "uploads" %}" method="post">
+            {% csrf_token %}
+            <input type="text" name="title" placeholder="title" required>
+            <input type="file" name="image" placeholder="image" required>
+            <input type="text" name="content" placeholder="content" required>
+            <button type="submit">upload</button>
+        </form>
+        {% else %}
+        <p>Sorry, wrong page</p>
+        {% endif %}
+    </body>
+</html>
